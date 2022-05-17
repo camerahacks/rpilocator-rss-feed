@@ -31,8 +31,16 @@ It also uses Requests to send the notification to the Pushbullet API.
 ```python
 pip install requests
 ```
+## Usage
 
-# Filters
+The easiest way to run this scrip continuously is to use ```nohup```
+
+```bash
+nohup python3 rpilocator-rss-pushbullet.py &
+```
+
+
+## Filters
 
 If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" target="_blank">hwlocator.com</a>.
 
