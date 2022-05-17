@@ -28,7 +28,7 @@ pip install requests
 
 # Filters
 
-If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" rel="noopener" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" rel="noopener" target="_blank">hwlocator.com</a>.
+If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" target="_blank">hwlocator.com</a>.
 
 After customzing the feed, update the ```FEED_URL``` variable.
 
