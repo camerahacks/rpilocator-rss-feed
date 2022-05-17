@@ -4,7 +4,7 @@ This is the official <a href="https://rpilocator.com" target="_blank">rpilocator
 
 I'm starting with a Pushbullet script but I plan to add other scripts for other notification systems.
 
-If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi, tweaking the site and communicating with different sellers so your time doing it.
+If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi computers (and other hardware), tweaking the sites, and communicating with different sellers so you don't have to spend your time doing it.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J6BINRX)
 
