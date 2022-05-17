@@ -1,10 +1,16 @@
 # rpilocator RSS Feed Notifications
 
-Check <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> feeds every minute and send a push notification when a product comes in stock.
+This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts. It checks the RSS feed every minute and sends a push notification when a product comes in stock.
+
+I'm starting with a Pushbullet script but I plan to add other scripts for other notification systems.
+
+If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi, tweaking the site and communicating with different sellers so your time doing it.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J6BINRX)
 
 ## RSS Notification Setup
 
-Download Pushbullet to your device (Android/iOS app or Browser extension). After logging in your Pushbullet account, create an Access Token. This token is used to send a push notification to your devices through the Pushbullet API.
+Download Pushbullet to your device (Android/iOS app or Browser extension). After logging in to your Pushbullet account, create an Access Token. This token is used to send a push notification to your devices through the Pushbullet API.
 
 Edit the scrip and enter your Access Token.
 
@@ -39,7 +45,7 @@ FEED_URL = 'https://rpilocator.com/feed/?country=US,CA&cat=CM4'
 
 The example above will only send notifications if Compute Module 4 comes in stock at a US or Canadian store.
 
-## Terms of service
+## Terms of use
 
 The script is set to check the RSS feed every minute. Don't be tempted to change this to a faster update interval. Faster updates will be blocked and you
 will end up missing a stock alert :)
