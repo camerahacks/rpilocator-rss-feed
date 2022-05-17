@@ -1,4 +1,4 @@
-# xlocator RSS Feed Notifications
+# rpilocator RSS Feed Notifications
 
 Check <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> feeds every minute and send a push notification when a product comes in stock.
 
@@ -28,7 +28,7 @@ pip install requests
 
 # Filters
 
-If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" target="_blank">hwlocator.com</a>.
+If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" rel="noopener" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" rel="noopener" target="_blank">hwlocator.com</a>.
 
 After customzing the feed, update the ```FEED_URL``` variable.
 
