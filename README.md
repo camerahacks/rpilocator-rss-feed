@@ -2,7 +2,7 @@
 
 This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts. It checks the RSS feed every minute and sends a push notification when a product comes in stock.
 
-I'm starting with a Pushbullet script but I plan to add other scripts for other notification systems.
+Send Pushbullet or Pushover notifications to your device.
 
 If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi computers (and other hardware), tweaking the sites, and communicating with different sellers so you don't have to spend your time doing it.
 
@@ -10,12 +10,27 @@ If you appreciate the work I do with rpilocator.com and hwlocatorcom consider bu
 
 ## RSS Notification Setup
 
+### Pushbullet
+
 Download Pushbullet to your device (Android/iOS app or Browser extension). After logging in to your Pushbullet account, create an Access Token. This token is used to send a push notification to your devices through the Pushbullet API.
 
 Edit the scrip and enter your Access Token.
 
 ```python
 PUSHBULLET_TOKEN = '<your access token here>'
+```
+
+### Pushover
+Download Pushover to your device (Android/iOS/Desktop). After logging in to your Pushover account, register an application. You will need your user key and the application token/key send a push notification to your devices through the Pushover API.
+
+Edit the scrip and enter your user key and application token/key.
+
+```python
+# User Key
+PUSHOVER_KEY = '<your user key here>'
+
+# Application Key
+PUSHOVER_API_KEY = '<your application key here>'
 ```
 
 ## Dependencies
