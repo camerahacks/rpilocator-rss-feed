@@ -2,7 +2,7 @@
 
 This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts. It checks the RSS feed every minute and sends a push notification when a product comes in stock.
 
-Send Pushbullet or Pushover notifications to your device.
+Send Pushbullet, Pushover or Gotify notifications to your device.
 
 If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi computers (and other hardware), tweaking the sites, and communicating with different sellers so you don't have to spend your time doing it.
 
@@ -23,7 +23,7 @@ PUSHBULLET_TOKEN = '<your access token here>'
 ### Pushover
 Download Pushover to your device (Android/iOS/Desktop). After logging in to your Pushover account, register an application. You will need your user key and the application token/key send a push notification to your devices through the Pushover API.
 
-Edit the scrip and enter your user key and application token/key.
+Edit the script and enter your user key and application token/key.
 
 ```python
 # User Key
@@ -31,6 +31,19 @@ PUSHOVER_KEY = '<your user key here>'
 
 # Application Key
 PUSHOVER_API_KEY = '<your application key here>'
+```
+
+### Gotify
+Create an application in your Gotify server. You will need the token from this to send a push notification to your devices through the Gotify API.
+
+Edit the script and enter your server base URL and application token.
+
+```python
+# Gotify Server Base URL e.g. https://mygotifyserver.com
+GOTIFY_BASE_URL = '<your gotify server url>'
+
+# Application Key
+GOTIFY_TOKEN = '<your application key here>'
 ```
 
 ## Dependencies
@@ -75,6 +88,3 @@ will end up missing a stock alert :)
 
 Feel free to modify the script and use with other RSS feeds. If you do so, please change the User Agent to something else. The User Agent is how web servers
 identify which software is accessing their website.
-
-
-
