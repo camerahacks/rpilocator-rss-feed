@@ -2,7 +2,7 @@
 
 This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts. It checks the RSS feed every minute and sends a push notification when a product comes in stock.
 
-Send Pushbullet or Pushover notifications to your device.
+Send Pushbullet, Pushover or Gotify notifications to your device.
 
 If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi computers (and other hardware), tweaking the sites, and communicating with different sellers so you don't have to spend your time doing it.
 
