@@ -14,7 +14,7 @@ If you appreciate the work I do with rpilocator.com and hwlocatorcom consider bu
 
 Download Pushbullet to your device (Android/iOS app or Browser extension). After logging in to your Pushbullet account, create an Access Token. This token is used to send a push notification to your devices through the Pushbullet API.
 
-Edit the scrip and enter your Access Token.
+Edit the script and enter your Access Token.
 
 ```python
 PUSHBULLET_TOKEN = '<your access token here>'
