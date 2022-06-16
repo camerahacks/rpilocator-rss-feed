@@ -46,6 +46,17 @@ GOTIFY_BASE_URL = '<your gotify server url>'
 GOTIFY_TOKEN = '<your application key here>'
 ```
 
+### Telegram
+Create a bot via telegrams 'BotFather'. You will need the token from this and your own telegram chat id.
+
+Edit the script and enter your bot token and chat_id.
+
+```python
+# Telegram settings
+TELEGRAM_BOT_TOKEN = '<your telegram bot token>'
+TELEGRAM_CHAT_ID = '<your telegram chat id>'
+```
+
 ## Dependencies
 
 The script uses the Feedparser module to parse RSS feed information, so you'll have to install it first.
@@ -59,6 +70,12 @@ It also uses Requests to send the notification to the Pushbullet API.
 ```python
 pip install requests
 ```
+
+For the telegram version you will also need the python telegram bot module.
+```python
+pip install python-telegram-bot
+```
+
 ## Usage
 
 The easiest way to run this scrip continuously is to use ```nohup```
