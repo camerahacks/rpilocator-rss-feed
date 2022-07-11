@@ -46,6 +46,17 @@ GOTIFY_BASE_URL = '<your gotify server url>'
 GOTIFY_TOKEN = '<your application key here>'
 ```
 
+### Discord
+Create a Discord webhook and copy the URL. You will need the URL to send notifications to your devices through Discord.
+
+Edit the script and enter your webhook URL.
+
+```python
+# Create a Discord Webhook and 
+# copy the URL here
+WEBHOOK_URL = '<your Discord webhook URL here>'
+```
+
 ## Dependencies
 
 The script uses the Feedparser module to parse RSS feed information, so you'll have to install it first.
@@ -54,7 +65,7 @@ The script uses the Feedparser module to parse RSS feed information, so you'll h
 pip install feedparser
 ```
 
-It also uses Requests to send the notification to the Pushbullet API.
+It also uses Requests to send the notification to the Pushbullet API and Discord API.
 
 ```python
 pip install requests
