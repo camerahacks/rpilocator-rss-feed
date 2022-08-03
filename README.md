@@ -65,7 +65,7 @@ The script uses the Feedparser module to parse RSS feed information, so you'll h
 pip install feedparser
 ```
 
-It also uses Requests to send the notification to the Pushbullet API and Discord API.
+It also uses Requests to send the notification to the APIs.
 
 ```python
 pip install requests
