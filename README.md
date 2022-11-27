@@ -2,13 +2,21 @@
 
 This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts. It checks the RSS feed every minute and sends a push notification when a product comes in stock.
 
-Send Pushbullet, Pushover or Gotify notifications to your device.
+Send ntfy, Pushbullet, Pushover or Gotify notifications to your device.
 
 If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi computers (and other hardware), tweaking the sites, and communicating with different sellers so you don't have to spend your time doing it.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J6BINRX)
 
 ## RSS Notification Setup
+
+### Ntfy
+Download <a href="https://ntfy.sh/">ntfy</a> to your device (Android/iOS app, webapplication). Subscribe to any desired topic and insert it to the script:
+```python
+NTFY_TOPIC = '<your topic here>'
+```
+
+If you want to use a private ntfy instance, you can also edit the `NTFY_BASE_URL` (without tailing /).
 
 ### Pushbullet
 
