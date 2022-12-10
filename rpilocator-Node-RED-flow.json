@@ -1,0 +1,151 @@
+[
+    {
+        "id": "dc6415197c0b21a2",
+        "type": "tab",
+        "label": "rpilocator Notification",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a0de6294ee4fa94e",
+        "type": "inject",
+        "z": "dc6415197c0b21a2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "50edf7c6cc0875d6"
+            ]
+        ]
+    },
+    {
+        "id": "50edf7c6cc0875d6",
+        "type": "http request",
+        "z": "dc6415197c0b21a2",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://rpilocator.com/feed/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "5687411af5e76884"
+            ]
+        ]
+    },
+    {
+        "id": "5687411af5e76884",
+        "type": "xml",
+        "z": "dc6415197c0b21a2",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "19f3042306f91188"
+            ]
+        ]
+    },
+    {
+        "id": "e7ed6679b9745246",
+        "type": "debug",
+        "z": "dc6415197c0b21a2",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "19f3042306f91188",
+        "type": "function",
+        "z": "dc6415197c0b21a2",
+        "name": "Check new alerts",
+        "func": "var control = context.get('control');\n\nvar rss = msg.payload.rss;\n\nvar entries = rss.channel[0].item;\n\nvar MESSAGE_TITLE = 'xlocator Stock Alert'\n\nvar result = {};\n\nif(control===undefined){\n    control = []\n    \n    for (const entry of entries) {\n        control.push(entry.guid[0]._);\n    }\n\n}\n\nfor (const entry of entries) {\n    if (!control.includes(entry.guid[0]._)){\n        var guidEntry = (entry.guid[0]._);\n\n        node.warn(entry);\n\n        var message = { 'type': 'link', 'title': MESSAGE_TITLE, 'body': entry.title[0], 'url': entry.link[0] }\n\n        node.warn(message);\n        \n        control.push(entry.guid[0]._);\n\n        msg.payload = message;\n\n        node.send(msg)\n    }\n}\n\ncontext.set('control', control)\n\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "e7ed6679b9745246",
+                "323569b71d2c70fe"
+            ]
+        ]
+    },
+    {
+        "id": "323569b71d2c70fe",
+        "type": "http request",
+        "z": "dc6415197c0b21a2",
+        "name": "Pushbullet",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.pushbullet.com/v2/pushes",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Access-Token",
+                "valueType": "other",
+                "valueValue": "<pushbullet token here>"
+            }
+        ],
+        "x": 530,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    }
+]
