@@ -1,6 +1,6 @@
 # rpilocator RSS Feed Notifications
 
-This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts. It checks the RSS feed every minute and sends a push notification when a product comes in stock.
+This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts and Node-RED flows. The RSS feed is checked every minute and the script/flow sends a push notification when a product comes in stock.
 
 Send ntfy, Pushbullet, Pushover or Gotify notifications to your device.
 
@@ -16,11 +16,11 @@ Download <a href="https://ntfy.sh/">ntfy</a> to your device (Android/iOS app, we
 NTFY_TOPIC = '<your topic here>'
 ```
 
-If you want to use a private ntfy instance, you can also edit the `NTFY_BASE_URL` (without tailing /).
+If you want to use a private ntfy instance, you can also edit the `NTFY_BASE_URL` (without trailing /).
 
 ### Pushbullet
 
-Download Pushbullet to your device (Android/iOS app or Browser extension). After logging in to your Pushbullet account, create an Access Token. This token is used to send a push notification to your devices through the Pushbullet API.
+Download Pushbullet to your device (Android/iOS App or Browser extension). After logging in to your Pushbullet account, create an Access Token. This token is used to send a push notification to your devices through the Pushbullet API.
 
 Edit the script and enter your Access Token.
 
@@ -42,7 +42,7 @@ PUSHOVER_API_KEY = '<your application key here>'
 ```
 
 ### Gotify
-Create an application in your Gotify server. You will need the token from this to send a push notification to your devices through the Gotify API.
+Create an application in your Gotify server. You will need the token from the server to send a push notification to your devices through the Gotify API.
 
 Edit the script and enter your server base URL and application token.
 
@@ -54,7 +54,7 @@ GOTIFY_BASE_URL = '<your gotify server url>'
 GOTIFY_TOKEN = '<your application key here>'
 ```
 
-## Dependencies
+## Python Dependencies
 
 The script uses the Feedparser module to parse RSS feed information, so you'll have to install it first.
 
@@ -69,12 +69,17 @@ pip install requests
 ```
 ## Usage
 
-The easiest way to run this scrip continuously is to use ```nohup```
+### Python Scripts
+
+The easiest way to run the Pyhton scrips continuously is to use ```nohup```
 
 ```bash
 nohup python3 rpilocator-rss-pushbullet.py &
 ```
 
+### Node-RED Flow
+
+You can import the JSON file into Node-RED as a new flow or just copy and paste it. Make sure to update the authorization information. For example, the Pushbullet node has a ```Access-Token``` header that needs to be update.
 
 ## Filters
 
