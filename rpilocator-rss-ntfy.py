@@ -13,7 +13,7 @@ FEED_URL = 'https://rpilocator.com/feed/'
 
 # ntfy settings
 NTFY_BASE_URL = 'https://ntfy.sh'
-NTFY_TOPIC = os.getenv('NTFY_TOPIC')
+NTFY_TOPIC = f"{os.getenv('NTFY_TOPIC')}"
 NTFY_PRIORITY = 'default'
 NTFY_EMOJI = 'white_check_mark'
 INITIAL_NOTIFICATION = False
