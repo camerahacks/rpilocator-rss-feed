@@ -36,13 +36,10 @@ def sendMessage (message):
         bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
     except Exception as err:
         print('Unhandled exception while creating telegram bot object: %s' % err, file = sys.stderr)
-        return False
     try:
         result_msg = bot.sendMessage(chat_id=TELEGRAM_CHAT_ID, text=message, parse_mode='HTML')
-        return isinstance(result_msg, telegram.message.Message)
     except Exception as err:
         print('Unhandled exception while sending telegram message: %s' % err, file = sys.stderr)
-        return False
 
 # Set control to blank list
 control = []
