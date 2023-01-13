@@ -1,6 +1,6 @@
 # rpilocator RSS Feed Notifications
 
-This is the official `<a href="https://rpilocator.com" target="_blank">`rpilocator.com`</a>` and `<a href="https://hwlocator.com" target="_blank">`hwlocator.com`</a>` RSS feed reader and push notification scripts and Node-RED flows. The RSS feed is checked every minute and the script/flow sends a push notification when a product comes in stock.
+This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts and Node-RED flows. The RSS feed is checked every minute and the script/flow sends a push notification when a product comes in stock.
 
 Send ntfy, Pushbullet, Pushover or Gotify notifications to your device.
 
@@ -12,7 +12,7 @@ If you appreciate the work I do with rpilocator.com and hwlocatorcom consider bu
 
 ### Ntfy
 
-Download `<a href="https://ntfy.sh/">`ntfy`</a>` to your device (Android/iOS app, webapplication). Subscribe to any desired topic and insert it to the script:
+Download <a href="https://ntfy.sh/">ntfy</a> to your device (Android/iOS app, webapplication). Subscribe to any desired topic and insert it to the script:
 
 ```python
 NTFY_TOPIC = '<your topic here>'
@@ -82,7 +82,7 @@ pip install python-dotenv
 
 ### Python Scripts
 
-The easiest way to run the Pyhton scrips continuously is to use ``nohup``
+The easiest way to run the Pyhton scrips continuously is to use `nohup`
 
 ```bash
 nohup python3 rpilocator-rss-pushbullet.py &
@@ -109,9 +109,9 @@ docker-compose up -d
 
 ## Filters
 
-If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at `<a href="https://rpilocator.com/about.cfm" target="_blank">`rpilocator.com`</a>` or `<a href="https://hwlocator.com/about.cfm" target="_blank">`hwlocator.com`</a>`.
+If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" target="_blank">hwlocator.com</a>.
 
-After customzing the feed, update the ``FEED_URL`` variable.
+After customzing the feed, update the `FEED_URL` variable.
 
 ```python
 FEED_URL = 'https://rpilocator.com/feed/?country=US,CA&cat=CM4'
