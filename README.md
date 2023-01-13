@@ -1,6 +1,6 @@
 # rpilocator RSS Feed Notifications
 
-This is the official <a href="https://rpilocator.com" target="_blank">rpilocator.com</a> and <a href="https://hwlocator.com" target="_blank">hwlocator.com</a> RSS feed reader and push notification scripts and Node-RED flows. The RSS feed is checked every minute and the script/flow sends a push notification when a product comes in stock.
+This is the official `<a href="https://rpilocator.com" target="_blank">`rpilocator.com`</a>` and `<a href="https://hwlocator.com" target="_blank">`hwlocator.com`</a>` RSS feed reader and push notification scripts and Node-RED flows. The RSS feed is checked every minute and the script/flow sends a push notification when a product comes in stock.
 
 Send ntfy, Pushbullet, Pushover or Gotify notifications to your device.
 
@@ -11,7 +11,9 @@ If you appreciate the work I do with rpilocator.com and hwlocatorcom consider bu
 ## RSS Notification Setup
 
 ### Ntfy
-Download <a href="https://ntfy.sh/">ntfy</a> to your device (Android/iOS app, webapplication). Subscribe to any desired topic and insert it to the script:
+
+Download `<a href="https://ntfy.sh/">`ntfy`</a>` to your device (Android/iOS app, webapplication). Subscribe to any desired topic and insert it to the script:
+
 ```python
 NTFY_TOPIC = '<your topic here>'
 ```
@@ -29,6 +31,7 @@ PUSHBULLET_TOKEN = '<your access token here>'
 ```
 
 ### Pushover
+
 Download Pushover to your device (Android/iOS/Desktop). After logging in to your Pushover account, register an application. You will need your user key and the application token/key send a push notification to your devices through the Pushover API.
 
 Edit the script and enter your user key and application token/key.
@@ -42,6 +45,7 @@ PUSHOVER_API_KEY = '<your application key here>'
 ```
 
 ### Gotify
+
 Create an application in your Gotify server. You will need the token from the server to send a push notification to your devices through the Gotify API.
 
 Edit the script and enter your server base URL and application token.
@@ -67,11 +71,18 @@ It also uses Requests to send the notification to the APIs.
 ```python
 pip install requests
 ```
+
+If you want to use the `global` script, you'll also need to install the Python-dotenv module to use `.env` files.
+
+```python
+pip install python-dotenv
+```
+
 ## Usage
 
 ### Python Scripts
 
-The easiest way to run the Pyhton scrips continuously is to use ```nohup```
+The easiest way to run the Pyhton scrips continuously is to use ``nohup``
 
 ```bash
 nohup python3 rpilocator-rss-pushbullet.py &
@@ -79,13 +90,28 @@ nohup python3 rpilocator-rss-pushbullet.py &
 
 ### Node-RED Flow
 
-You can import the JSON file into Node-RED as a new flow or just copy and paste it. Make sure to update the authorization information. For example, the Pushbullet node has a ```Access-Token``` header that needs to be update.
+You can import the JSON file into Node-RED as a new flow or just copy and paste it. Make sure to update the authorization information. For example, the Pushbullet node has a ``Access-Token`` header that needs to be update.
+
+### Docker
+
+Another easy way to run the script is to use Docker. You can use the Dockerfile to build your own image with the pre-configured `docker-compose.yml` file.
+
+Before deploying the container, make sure to rename the .env.example file and update the environment variables.
+    
+    Note: You are not required to fill out all the variables. Just fill out the ones for your notification service.
+
+Then, run the following command to deploy the container.
+
+```bash
+docker-compose up -d
+```
+
 
 ## Filters
 
-If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at <a href="https://rpilocator.com/about.cfm" target="_blank">rpilocator.com</a> or <a href="https://hwlocator.com/about.cfm" target="_blank">hwlocator.com</a>.
+If you would like to only get notified if certain product categories come in stock in a certain country (for example), you can use the feed customizer at `<a href="https://rpilocator.com/about.cfm" target="_blank">`rpilocator.com`</a>` or `<a href="https://hwlocator.com/about.cfm" target="_blank">`hwlocator.com`</a>`.
 
-After customzing the feed, update the ```FEED_URL``` variable.
+After customzing the feed, update the ``FEED_URL`` variable.
 
 ```python
 FEED_URL = 'https://rpilocator.com/feed/?country=US,CA&cat=CM4'
