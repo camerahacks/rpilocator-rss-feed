@@ -2,10 +2,6 @@ import requests
 import feedparser
 import time
 import json
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # Feed URL
 FEED_URL = 'https://rpilocator.com/feed/'
@@ -13,16 +9,16 @@ FEED_URL = 'https://rpilocator.com/feed/'
 
 # ntfy settings
 NTFY_BASE_URL = 'https://ntfy.sh'
-NTFY_TOPIC = f"{os.getenv('NTFY_TOPIC')}"
+NTFY_TOPIC = '<your topic here>'
 NTFY_PRIORITY = 'default'
 NTFY_EMOJI = 'white_check_mark'
 INITIAL_NOTIFICATION = False
 
 # Customize the message title
-MESSAGE_TITLE = 'pilocator Stock Alert'
+MESSAGE_TITLE = 'xlocator Stock Alert'
 
 # User Agent
-USER_AGENT = 'pilocator feed alert'
+USER_AGENT = 'xlocator feed alert'
 
 # Create the message body
 def formatMessage(entry):
@@ -58,10 +54,6 @@ control = []
 # Fetch the feed
 f = feedparser.parse(FEED_URL, agent=USER_AGENT)
 
-# Send online message
-firstmessage = 'Hello, I am online'
-sendMessage(firstmessage)
-
 # If there are entries in the feed, add entry guid to the control variable
 if f.entries:
     for entries in f.entries:
@@ -91,3 +83,4 @@ while True:
             control.append(entries.id)
 
     time.sleep(59)
+    
