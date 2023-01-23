@@ -15,8 +15,10 @@ def str2bool(str):
 def getvar(variable_name, default):
     var = os.getenv(variable_name)
     filevar = variable_name + '_FILE'
-    with open('/run/secrets/' + filevar, 'r') as f:
-        filevarcontent = f.readline()
+    filevarpath = '/run/secrets/' + filevar
+    if filevarpath.exists():
+        with open(filevarpath, 'r') as f:
+            filevarcontent = f.readline()
 
     if var and filevarcontent:
         print('An environment variable and a Docker Secret have been set for ' + variable_name + '. The Docker Secret will be ignored.')
