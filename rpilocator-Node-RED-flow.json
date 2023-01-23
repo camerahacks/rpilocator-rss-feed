@@ -21,7 +21,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "60",
+        "repeat": "65",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -52,6 +52,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
+        "credentials": {},
         "x": 330,
         "y": 120,
         "wires": [
@@ -84,10 +85,10 @@
         "active": true,
         "tosidebar": true,
         "console": false,
-        "tostatus": false,
+        "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "",
+        "statusVal": "payload",
         "statusType": "auto",
         "x": 650,
         "y": 260,
@@ -98,7 +99,7 @@
         "type": "function",
         "z": "dc6415197c0b21a2",
         "name": "Check new alerts",
-        "func": "var control = context.get('control');\n\nvar rss = msg.payload.rss;\n\nvar entries = rss.channel[0].item;\n\nvar MESSAGE_TITLE = 'xlocator Stock Alert'\n\nvar result = {};\n\nif(control===undefined){\n    control = []\n    \n    for (const entry of entries) {\n        control.push(entry.guid[0]._);\n    }\n\n}\n\nfor (const entry of entries) {\n    if (!control.includes(entry.guid[0]._)){\n        var guidEntry = (entry.guid[0]._);\n\n        node.warn(entry);\n\n        var message = { 'type': 'link', 'title': MESSAGE_TITLE, 'body': entry.title[0], 'url': entry.link[0] }\n\n        node.warn(message);\n        \n        control.push(entry.guid[0]._);\n\n        msg.payload = message;\n\n        node.send(msg)\n    }\n}\n\ncontext.set('control', control)\n\nreturn;",
+        "func": "var control = context.get('control');\n\nvar rss = msg.payload.rss;\n\nvar entries = rss.channel[0].item;\n\nvar MESSAGE_TITLE = 'xlocator Stock Alert'\n\nvar result = {};\n\nif(control===undefined){\n    control = []\n    \n        if(entries !== undefined){\n            for (const entry of entries) {\n                control.push(entry.guid[0]._);\n            }\n        }\n\n}\n\nif (entries !== undefined) {\n    for (const entry of entries) {\n        if (!control.includes(entry.guid[0]._)){\n            var guidEntry = (entry.guid[0]._);\n\n            node.warn(entry);\n\n            var message = { 'type': 'link', 'title': MESSAGE_TITLE, 'body': entry.title[0], 'url': entry.link[0] }\n\n            node.warn(message);\n            \n            control.push(entry.guid[0]._);\n\n            msg.payload = message;\n\n            node.send(msg)\n        }\n    }\n}\n\ncontext.set('control', control)\n\nreturn;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -139,13 +140,25 @@
                 "keyType": "other",
                 "keyValue": "Access-Token",
                 "valueType": "other",
-                "valueValue": "<pushbullet token here>"
+                "valueValue": "Enter Token Here"
             }
         ],
+        "credentials": {},
         "x": 530,
         "y": 380,
         "wires": [
             []
-        ]
+        ],
+        "info": "Send a Pushbullet notification to your device.\r\nMake sure to update the 'Access-Token' header\r\nbefore deploying the flow."
+    },
+    {
+        "id": "42a2db4e8dad266d",
+        "type": "comment",
+        "z": "dc6415197c0b21a2",
+        "name": "",
+        "info": "Check rpilocator RSS feed and send a notification\nto your device. Check [rpilocator.com](rpilocator.com) or \nthe [Gihut repo](https://github.com/camerahacks/rpilocator-rss-feed) for more info\n",
+        "x": 140,
+        "y": 40,
+        "wires": []
     }
 ]
