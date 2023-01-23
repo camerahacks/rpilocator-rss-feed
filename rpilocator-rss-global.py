@@ -7,46 +7,67 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-#String to Boolean
+# String to Boolean
 def str2bool(str):
     return str.lower() in ("yes", "true", "t", "1")
 
+# Variable loader
+def getvar(variable_name, default):
+    var = os.getenv(variable_name)
+    filevar = variable_name + '_FILE'
+    with open('/run/secrets/' + filevar, 'r') as f:
+        filevarcontent = f.readline()
+
+    if var and filevarcontent:
+        print('An environment variable and a Docker Secret have been set for ' + variable_name + '. The Docker Secret will be ignored.')
+    
+    if var:
+        val = var
+    elif filevarcontent:
+        val = filevarcontent
+    elif default:
+        val = default
+    else:
+        val = ''
+
+    return val
+
 # Notification service
-NOTIFICATION_SERVICE = os.getenv('NOTIFICATION_SERVICE')
+NOTIFICATION_SERVICE = getvar('NOTIFICATION_SERVICE', 'ntfy')
 
 # Feed URL
-FEED_URL = os.getenv('FEED_URL')
+FEED_URL = getvar('FEED_URL', 'https://rpilocator.com/feed/')
 
 # ntfy settings
-NTFY_BASE_URL = os.getenv('NTFY_BASE_URL')
-NTFY_TOPIC = os.getenv('NTFY_TOPIC')
-NTFY_PRIORITY = os.getenv('NTFY_PRIORITY')
-NTFY_EMOJI = os.getenv('NTFY_EMOJI')
+NTFY_BASE_URL = getvar('NTFY_BASE_URL', 'https://ntfy.sh')
+NTFY_TOPIC = getvar('NTFY_TOPIC')
+NTFY_PRIORITY = getvar('NTFY_PRIORITY', 'default')
+NTFY_EMOJI = getvar('NTFY_EMOJI', 'white_check_mark')
 
 # Gotify settings
-GOTIFY_BASE_URL = os.getenv('GOTIFY_BASE_URL')
-GOTIFY_TOKEN = os.getenv('GOTIFY_TOKEN')
-GOTIFY_PRIORITY = os.getenv('GOTIFY_PRIORITY')
+GOTIFY_BASE_URL = getvar('GOTIFY_BASE_URL')
+GOTIFY_TOKEN = getvar('GOTIFY_TOKEN')
+GOTIFY_PRIORITY = getvar('GOTIFY_PRIORITY', 5)
 
 # After creating your pushbullet account, create an 
 # Access Token and enter it here
-PUSHBULLET_TOKEN = os.getenv('PUSHBULLET_TOKEN')
+PUSHBULLET_TOKEN = getvar('PUSHBULLET_TOKEN')
 
 # After creating your Pushover account, register your application
 # User Key
-PUSHOVER_KEY = os.getenv('PUSHOVER_KEY')
+PUSHOVER_KEY = getvar('PUSHOVER_KEY')
 # Application Key
-PUSHOVER_API_KEY = os.getenv('PUSHOVER_API_KEY')
+PUSHOVER_API_KEY = getvar('PUSHOVER_API_KEY')
 
 # Initial notifications
-INITIAL_NOTIFICATION = str2bool(os.getenv('INITIAL_NOTIFICATION'))
-ONLINE_NOTIFICATION = str2bool(os.getenv('ONLINE_NOTIFICATION'))
+INITIAL_NOTIFICATION = str2bool(getvar('INITIAL_NOTIFICATION', False))
+ONLINE_NOTIFICATION = str2bool(getvar('ONLINE_NOTIFICATION', True))
 
 # Customize the message title
-MESSAGE_TITLE = os.getenv('MESSAGE_TITLE')
+MESSAGE_TITLE = getvar('MESSAGE_TITLE', 'Pilocator Stock Alert')
 
 # User Agent
-USER_AGENT = os.getenv('USER_AGENT')
+USER_AGENT = getvar('USER_AGENT', 'pilocator feed alert')
 
 # Create the message body
 def formatMessage(entry):
