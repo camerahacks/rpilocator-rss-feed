@@ -4,6 +4,7 @@ import time
 import json
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
@@ -12,13 +13,15 @@ def str2bool(str):
     return str.lower() in ("yes", "true", "t", "1")
 
 # Variable loader
-def getvar(variable_name, default):
+def getvar(variable_name, default=''):
     var = os.getenv(variable_name)
     filevar = variable_name + '_FILE'
-    filevarpath = '/run/secrets/' + filevar
+    filevarpath = Path('/run/secrets/' + filevar)
+    filevarcontent = ''
+    
     if filevarpath.exists():
         with open(filevarpath, 'r') as f:
-            filevarcontent = f.readline()
+            filevarcontent = f.readline().strip()
 
     if var and filevarcontent:
         print('An environment variable and a Docker Secret have been set for ' + variable_name + '. The Docker Secret will be ignored.')
@@ -27,10 +30,8 @@ def getvar(variable_name, default):
         val = var
     elif filevarcontent:
         val = filevarcontent
-    elif default:
-        val = default
     else:
-        val = ''
+        val = default
 
     return val
 
@@ -49,7 +50,7 @@ NTFY_EMOJI = getvar('NTFY_EMOJI', 'white_check_mark')
 # Gotify settings
 GOTIFY_BASE_URL = getvar('GOTIFY_BASE_URL')
 GOTIFY_TOKEN = getvar('GOTIFY_TOKEN')
-GOTIFY_PRIORITY = getvar('GOTIFY_PRIORITY', 5)
+GOTIFY_PRIORITY = int(getvar('GOTIFY_PRIORITY', 5))
 
 # After creating your pushbullet account, create an 
 # Access Token and enter it here
@@ -189,9 +190,6 @@ if ONLINE_NOTIFICATION == True:
     firstmessage.link = 'https://github.com/camerahacks/rpilocator-rss-feed'
     message = formatMessage(firstmessage)
     sendMessage(message)
-if ONLINE_NOTIFICATION == True:
-    firstmessage = 'Hello, I am online'
-    sendMessage(firstmessage)
 
 # If there are entries in the feed, add entry guid to the control variable
 if f.entries:
