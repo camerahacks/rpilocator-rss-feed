@@ -97,7 +97,7 @@ You can import the JSON file into Node-RED as a new flow or just copy and paste 
 Another easy way to run the script is to use Docker. You can use the Dockerfile to build your own image with the pre-configured `docker-compose.yml` file.
 
 Before deploying the container, make sure to set the required environment variables. You can do this by creating a `.env` file in the same directory as the `docker-compose.yml` file, by setting the environment variables in the `docker-compose.yml` file. 
-If you want to use the Docker Secrets feature or something similar, every variable can have `_FILE` appended at the end of its name to point to a file in the container where value would be.
+If you want to use the Docker Secrets feature or something similar, every variable can have `_FILE` appended at the end of its name to point to a file in the container where the value would be.
 
 | Variable               | Default                        | Description                                                                          |
 | ---------------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
