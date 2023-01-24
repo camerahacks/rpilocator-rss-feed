@@ -63,8 +63,8 @@ PUSHOVER_KEY = getvar('PUSHOVER_KEY')
 PUSHOVER_API_KEY = getvar('PUSHOVER_API_KEY')
 
 # Initial notifications
-INITIAL_NOTIFICATION = str2bool(getvar('INITIAL_NOTIFICATION', False))
-ONLINE_NOTIFICATION = str2bool(getvar('ONLINE_NOTIFICATION', True))
+INITIAL_NOTIFICATION = str2bool(getvar('INITIAL_NOTIFICATION', 'False'))
+ONLINE_NOTIFICATION = str2bool(getvar('ONLINE_NOTIFICATION', 'True'))
 
 # Customize the message title
 MESSAGE_TITLE = getvar('MESSAGE_TITLE', 'Pilocator Stock Alert')
