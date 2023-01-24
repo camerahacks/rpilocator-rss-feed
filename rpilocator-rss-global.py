@@ -179,7 +179,16 @@ control = []
 # Fetch the feed
 f = feedparser.parse(FEED_URL, agent=USER_AGENT)
 
+class Message(object):
+    pass
+
 # Send online message
+if ONLINE_NOTIFICATION == True:
+    firstmessage = Message()
+    firstmessage.title = 'Hello, I am online'
+    firstmessage.link = 'https://github.com/camerahacks/rpilocator-rss-feed'
+    message = formatMessage(firstmessage)
+    sendMessage(message)
 if ONLINE_NOTIFICATION == True:
     firstmessage = 'Hello, I am online'
     sendMessage(firstmessage)
