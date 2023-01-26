@@ -26,4 +26,4 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: rpilocator-rss-reader:latest
+        tags: cyrilschreiber/rpilocator-rss-reader:latest
