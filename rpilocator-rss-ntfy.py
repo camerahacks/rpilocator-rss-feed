@@ -83,3 +83,4 @@ while True:
             control.append(entries.id)
 
     time.sleep(59)
+    

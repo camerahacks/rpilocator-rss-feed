@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  notifier:
+    build: .
+    container_name: 'rpilocator-notifier'
+    restart: always
+    env_file:
+      - .env
