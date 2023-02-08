@@ -1,5 +1,7 @@
 # rpilocator RSS Feed Notifications
 
+[![docker image](https://img.shields.io/docker/v/cyrilschreiber/rpilocator-rss-reader?color=red&label=docker%20image&style=for-the-badge)](https://hub.docker.com/r/cyrilschreiber/rpilocator-rss-reader/tags)
+
 This is the official `<a href="https://rpilocator.com" target="_blank">`rpilocator.com `</a>` and `<a href="https://hwlocator.com" target="_blank">`hwlocator.com `</a>` RSS feed reader and push notification scripts and Node-RED flows. The RSS feed is checked every minute and the script/flow sends a push notification when a product comes in stock.
 
 Send ntfy, Pushbullet, Pushover or Gotify notifications to your device.
@@ -7,6 +9,19 @@ Send ntfy, Pushbullet, Pushover or Gotify notifications to your device.
 If you appreciate the work I do with rpilocator.com and hwlocatorcom consider buying me a coffee. I spend a lot of time looking for Raspberry Pi computers (and other hardware), tweaking the sites, and communicating with different sellers so you don't have to spend your time doing it.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J6BINRX)
+
+- [RSS Notitification Setup](#rss-notification-setup)
+  - [Ntfy](#ntfy)
+  - [Pushbullet](#pushbullet)
+  - [Pushover](#pushover)
+  - [Gotify](#gotify)
+- [Python Dependencies](#python-dependencies)
+- [Usage](#usage)
+  - [Python Scripts](#python-scripts)
+  - [Node-RED Flow](#node-red-flow)
+  - [Docker](#docker)
+- [Filters](#filters)
+- [Terms of use](#terms-of-use)
 
 ## RSS Notification Setup
 
@@ -90,13 +105,16 @@ nohup python3 rpilocator-rss-pushbullet.py &
 
 ### Node-RED Flow
 
-You can import the JSON file into Node-RED as a new flow or just copy and paste it. Make sure to update the authorization information. For example, the Pushbullet node has a ``Access-Token`` header that needs to be update.
+You can import the JSON file into Node-RED as a new flow or just copy and paste it. Make sure to update the authorization information. For example, the Pushbullet node has a `Access-Token` header that needs to be update.
 
 ### Docker
 
+> ** Note **
+> There is a prebuilt docker image `cyrilschreiber/rpilocator-rss-reader`
+
 Another easy way to run the script is to use Docker. You can use the Dockerfile to build your own image with the pre-configured `docker-compose.yml` file.
 
-Before deploying the container, make sure to set the required environment variables. You can do this by creating a `.env` file in the same directory as the `docker-compose.yml` file, by setting the environment variables in the `docker-compose.yml` file. 
+Before deploying the container, make sure to set the required environment variables. You can do this by creating a `.env` file in the same directory as the `docker-compose.yml` file, by setting the environment variables in the `docker-compose.yml` file.
 If you want to use the Docker Secrets feature or something similar, every variable can have `_FILE` appended at the end of its name to point to a file in the container where the value would be.
 
 | Variable               | Default                        | Description                                                                          |
@@ -105,7 +123,7 @@ If you want to use the Docker Secrets feature or something similar, every variab
 | `NTFY_BASE_URL`        | `https://ntfy.sh`              | Base URL of your ntfy instance.                                                      |
 | `NTFY_TOPIC`           |                                | Your ntfy topic.                                                                     |
 | `NTFY_PRIORITY`        | `default`                      | Priority of the notification.                                                        |
-| `NTFY_EMOJI`           | `white_check_mark` (✅)         | Emoji to use in the notification.                                                    |
+| `NTFY_EMOJI`           | `white_check_mark` (✅)        | Emoji to use in the notification.                                                    |
 | `GOTIFY_BASE_URL`      |                                | Base URL of your Gotify server.                                                      |
 | `GOTIFY_TOKEN`         |                                | Application token of your Gotify application.                                        |
 | `GOTIFY_PRIORITY`      | `5`                            | Priority of the notification.                                                        |
