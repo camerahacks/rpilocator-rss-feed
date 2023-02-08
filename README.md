@@ -110,6 +110,7 @@ You can import the JSON file into Node-RED as a new flow or just copy and paste 
 ### Docker
 
 > **Note**
+>
 > There is a prebuilt docker image `cyrilschreiber/rpilocator-rss-reader`
 
 Another easy way to run the script is to use Docker. You can use the Dockerfile to build your own image with the pre-configured `docker-compose.yml` file.
